@@ -2,7 +2,8 @@
 
 ## Overview
 Welcome to our Web Development college course project! This feature-rich website combines a gallery and an e-commerce store, providing users with a visually appealing and seamless online experience.
-![Home Page](https://imgur.com/N4hTRCE)
+
+![Home Page](https://i.imgur.com/5qfubna.png)
 ### Technologies Used
 - HTML
 - CSS
@@ -15,7 +16,7 @@ Welcome to our Web Development college course project! This feature-rich website
 ## Getting Started
 
 ### Prerequisites
-To run this project locally, you'll need to have the following installed:
+_To run this project locally, you'll need to have the following installed:_
 
 1. [XAMPP](https://www.apachefriends.org/index.html) - A free and open-source cross-platform web server solution.
 2. [phpMyAdmin](https://www.phpmyadmin.net/) - A web-based database administration tool for MySQL databases.
@@ -35,7 +36,7 @@ To run this project locally, you'll need to have the following installed:
 
 4. Move the project files to the XAMPP's `htdocs` directory.
 
-5. Open your browser and navigate to http://localhost/AlAhramSehly-Demo-Website/public/home.php to access the main page.
+5. Open your browser and navigate to http://localhost/AlAhramSehly-Demo-Website/public/home.php to access **the main page.**
 
 ## Project Structure
 
@@ -68,7 +69,7 @@ In the `shop_db` database, you will find the following tables:
 - `products`: Contains information about the available products in the e-commerce store.
 
 ## Pages and Functionalities
-- **Main Page (`home.php`):** The main landing page of the website, showcasing gallery images and featured products.
+- **Main Page (**`home.php`**):** The main landing page of the website, showcasing gallery images and featured products.
 - **About Me (`aboutme.html`):** Learn more about the project and the team behind it.
 - **Contact (`contact.php`):** Find contact details and use the form for inquiries.
 - **Sign Up (`sign_up.php`):** User registration page for creating new accounts.
