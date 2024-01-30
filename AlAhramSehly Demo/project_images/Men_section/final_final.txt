@@ -1,0 +1,113 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+const int MAX_VALUE = 99999999;
+
+vector<int> solveAssignmentProblem(vector<vector<int>>& matrix, bool maximize) {
+    int n = matrix.size();
+    int o = n+1;
+
+    vector<int> pos(o), q(o);
+    vector<int> x(o), t(o), u(o);
+    vector<int> as(n, -1);
+
+    if (maximize == 1) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = -matrix[i][j];
+            }
+        }
+    }
+
+    for (int i = 1; i <= n; i++) {
+        pos[0] = i;
+        int l = 0;
+        vector<int> dis(n + 1, MAX_VALUE);
+        vector<bool> cur(n + 1, false);
+
+        do {
+            cur[l] = true;
+            int o = pos[l], valm;
+            int e = MAX_VALUE;
+
+            for (int j = 1; j <= n; j++) {
+                if (!cur[j]) {
+                    int c = matrix[o - 1][j - 1] - x[o] - t[j];
+                    if (c < dis[j]) {
+                        dis[j] = c;
+                        q[j] = l;
+                        u[j] = c;
+                    }
+                    if (dis[j] < e) {
+                        e = dis[j];
+                        valm = j;
+                    }
+                }
+            }
+
+            for (int j = 0; j <= n; j++) {
+                if (cur[j]) {
+                    x[pos[j]] += e;
+                    t[j] -= e;
+                } else {
+                    dis[j] -= e;
+                }
+            }
+
+            l = valm;
+
+        } while (pos[l] != 0);
+
+        do {
+            int y = q[l];
+            pos[l] = pos[y];
+            l = y;
+        } while (l);
+    }
+
+    for (int i = 1; i <= n; i++) {
+        int it;
+        it= pos[i]-1;
+        as[it] = i - 1;
+    }
+
+    return as;
+}
+
+int main() {
+    int size;
+    cout << "Enter the size of the cost matrix: ";
+    cin >> size;
+
+    vector<vector<int>> costMatrix(size, vector<int>(size));
+
+    cout << "Enter the elements of the cost matrix:" << endl;
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            cin >> costMatrix[i][j];
+        }
+    }
+
+    bool maximize;
+    cout << "Enter '1' to maximize or '0' to minimize: ";
+    cin >> maximize;
+
+    vector<int> result = solveAssignmentProblem(costMatrix, maximize);
+
+    cout << "The final assignment is: ";
+    int totalCost = 0;
+    for (int i = 0; i < size; i++) {
+        int cost = costMatrix[i][result[i]];
+        if (maximize==1) {
+            /* In maximization case, we negatvive  the cost*/
+            cost = -cost;
+        }
+        totalCost += cost;
+    }
+
+    cout << "Result: " << totalCost << endl;
+
+    return 0;
+}
